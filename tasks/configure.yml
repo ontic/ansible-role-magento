@@ -26,7 +26,7 @@
     repo: '{{ magento_git.repo }}'
     ssh_opts: '{{ magento_git.ssh_opts | default(omit) }}'
     track_submodules: '{{ magento_git.track_submodules | default(omit) }}'
-    update: '{{ magento_git.update | default(omit) }}'
+    update: yes
     verify_commit: '{{ magento_git.verify_commit | default(omit) }}'
     version: '{{ magento_git.version | default(omit) }}'
   when: '{{ magento_git | default(None) != None }}'
