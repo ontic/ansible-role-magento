@@ -1,0 +1,67 @@
+# This source file is subject to the (Open Source Initiative) BSD license
+# that is bundled with this package in the LICENSE file. It is also available
+# through the world-wide-web at this URL: http://www.ontic.com.au/license.html
+# If you did not receive a copy of the license and are unable to obtain it through
+# the world-wide-web, please send an email to license@ontic.com.au immediately.
+# Copyright (c) 2010-2016 Ontic. (http://www.ontic.com.au). All rights reserved.
+
+---
+
+magento_user: 'root'
+magento_group: 'root'
+magento_git:
+magento_composer:
+magento_local_xml_dest:
+magento_local_xml_template: 'local.xml.j2'
+magento_local_xml_mode: '0644'
+magento_admin_path: 'admin'
+magento_install_date: 'Thu, 02 Jun 2016 15:36:33 +0000'
+magento_crypt: '913270dad1bd462db41bf9b3ae511e6b'
+magento_disable_local_modules: 'false'
+magento_db_table_prefix: ''
+magento_connection_host: '127.0.0.1'
+magento_connection_username: 'username'
+magento_connection_password: 'password'
+magento_connection_dbname: 'database'
+magento_connection_init_statements: 'SET NAMES utf8'
+magento_connection_model: 'mysql4'
+magento_connection_type: 'pdo_mysql'
+magento_connection_pdo_type: ''
+magento_connection_active: '1'
+magento_session_save: 'db'
+magento_redis_session_enabled: yes
+magento_redis_session_host: '127.0.0.1'
+magento_redis_session_port: '6379'
+magento_redis_session_password: ''
+magento_redis_session_timeout: '2.5'
+magento_redis_session_persistent: ''
+magento_redis_session_db: '0'
+magento_redis_session_compression_threshold: '2048'
+magento_redis_session_compression_lib: 'gzip'
+magento_redis_session_log_level: '1'
+magento_redis_session_max_concurrency: '6'
+magento_redis_session_break_after_frontend: '5'
+magento_redis_session_fail_after: '10'
+magento_redis_session_break_after_adminhtml: '30'
+magento_redis_session_first_lifetime: '600'
+magento_redis_session_bot_first_lifetime: '60'
+magento_redis_session_bot_lifetime: '7200'
+magento_redis_session_disable_locking: '0'
+magento_redis_session_min_lifetime: '60'
+magento_redis_session_max_lifetime: '2592000'
+magento_redis_cache_enabled: yes
+magento_redis_cache_backend: 'Cm_Cache_Backend_Redis'
+magento_redis_cache_backend_server: '127.0.0.1'
+magento_redis_cache_backend_port: '6379'
+magento_redis_cache_backend_persistent: ''
+magento_redis_cache_backend_database: '1'
+magento_redis_cache_backend_password: ''
+magento_redis_cache_backend_force_standalone: '0'
+magento_redis_cache_backend_connect_retries: '1'
+magento_redis_cache_backend_read_timeout: '10'
+magento_redis_cache_backend_automatic_cleaning_factor: '0'
+magento_redis_cache_backend_compress_data: '1'
+magento_redis_cache_backend_compress_tags: '1'
+magento_redis_cache_backend_compress_threshold: '20480'
+magento_redis_cache_backend_compression_lib: 'gzip'
+magento_redis_cache_backend_use_lua: '0'

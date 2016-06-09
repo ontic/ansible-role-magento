@@ -1,0 +1,58 @@
+# This source file is subject to the (Open Source Initiative) BSD license
+# that is bundled with this package in the LICENSE file. It is also available
+# through the world-wide-web at this URL: http://www.ontic.com.au/license.html
+# If you did not receive a copy of the license and are unable to obtain it through
+# the world-wide-web, please send an email to license@ontic.com.au immediately.
+# Copyright (c) 2010-2016 Ontic. (http://www.ontic.com.au). All rights reserved.
+
+---
+
+- name: 'Magento | Configure Git repository.'
+  become: yes
+  become_user: '{{ magento_user }}'
+  git:
+    accept_hostkey: '{{ magento_git.accept_hostkey | default(omit) }}'
+    bare: '{{ magento_git.bare | default(omit) }}'
+    clone: '{{ magento_git.clone | default(omit) }}'
+    depth: '{{ magento_git.depth | default(omit) }}'
+    dest: '{{ magento_git.dest }}'
+    executable: '{{ magento_git.executable | default(omit) }}'
+    force: '{{ magento_git.force | default(omit) }}'
+    key_file: '{{ magento_git.key_file | default(omit) }}'
+    recursive: '{{ magento_git.recursive | default(omit) }}'
+    reference: '{{ magento_git.reference | default(omit) }}'
+    refspec: '{{ magento_git.refspec | default(omit) }}'
+    remote: '{{ magento_git.remote | default(omit) }}'
+    repo: '{{ magento_git.repo }}'
+    ssh_opts: '{{ magento_git.ssh_opts | default(omit) }}'
+    track_submodules: '{{ magento_git.track_submodules | default(omit) }}'
+    update: '{{ magento_git.update | default(omit) }}'
+    verify_commit: '{{ magento_git.verify_commit | default(omit) }}'
+    version: '{{ magento_git.version | default(omit) }}'
+  when: '{{ magento_git | default(None) != None }}'
+
+- name: 'Magento | Configure composer.'
+  become: yes
+  become_user: '{{ magento_user }}'
+  composer:
+    arguments: '{{ magento_composer.arguments | default(omit) }}'
+    command: '{{ magento_composer.command | default(omit) }}'
+    ignore_platform_reqs: '{{ magento_composer.ignore_platform_reqs | default(omit) }}'
+    no_dev: '{{ magento_composer.no_dev | default(omit) }}'
+    no_plugins: '{{ magento_composer.no_plugins | default(omit) }}'
+    no_scripts: '{{ magento_composer.no_scripts | default(omit) }}'
+    optimize_autoloader: '{{ magento_composer.optimize_autoloader | default(omit) }}'
+    prefer_dist: '{{ magento_composer.prefer_dist | default(omit) }}'
+    prefer_source: '{{ magento_composer.prefer_source | default(omit) }}'
+    working_dir: '{{ magento_composer.working_dir }}'
+  when: '{{ magento_composer | default(None) != None }}'
+
+- name: 'Magento | Configure local XML file.'
+  become: yes
+  template:
+    src: '{{ magento_local_xml_template }}'
+    dest: '{{ magento_local_xml_dest }}'
+    owner: '{{ magento_user }}'
+    group: '{{ magento_group }}'
+    mode: '{{ magento_local_xml_mode }}'
+  when: '{{ magento_local_xml_dest | default(None) != None }}'

@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!-- {{ ansible_managed }} -->
+<config>
+	<global>
+		<install>
+			<date><![CDATA[{{ magento_install_date }}]]></date>
+		</install>
+		<crypt>
+			<key><![CDATA[{{ magento_crypt }}]]></key>
+		</crypt>
+		<disable_local_modules>{{ magento_disable_local_modules }}</disable_local_modules>
+		<resources>
+			<db>
+				<table_prefix><![CDATA[{{ magento_db_table_prefix }}]]></table_prefix>
+			</db>
+			<default_setup>
+				<connection>
+					<host><![CDATA[{{ magento_connection_host }}]]></host>
+					<username><![CDATA[{{ magento_connection_username }}]]></username>
+					<password><![CDATA[{{ magento_connection_password }}]]></password>
+					<dbname><![CDATA[{{ magento_connection_dbname }}]]></dbname>
+					<initStatements><![CDATA[{{ magento_connection_init_statements }}]]></initStatements>
+					<model><![CDATA[{{ magento_connection_model }}]]></model>
+					<type><![CDATA[{{ magento_connection_type }}]]></type>
+					<pdoType><![CDATA[{{ magento_connection_pdo_type }}]]></pdoType>
+					<active>{{ magento_connection_active }}</active>
+				</connection>
+			</default_setup>
+		</resources>
+		<session_save><![CDATA[{{ magento_session_save }}]]></session_save>
+		{% if magento_redis_session_enabled %}
+		<redis_session>
+			<host>{{ magento_redis_session_host }}</host>
+			<port>{{ magento_redis_session_port }}</port>
+			<password>{{ magento_redis_session_password }}</password>
+			<timeout>{{ magento_redis_session_timeout }}</timeout>
+			<persistent>{{ magento_redis_session_persistent }}</persistent>
+			<db>{{ magento_redis_session_db }}</db>
+			<compression_threshold>{{ magento_redis_session_compression_threshold }}</compression_threshold>
+			<compression_lib>{{ magento_redis_session_compression_lib }}</compression_lib>
+			<log_level>{{ magento_redis_session_log_level }}</log_level>
+			<max_concurrency>{{ magento_redis_session_max_concurrency }}</max_concurrency>
+			<break_after_frontend>{{ magento_redis_session_break_after_frontend }}</break_after_frontend>
+			<fail_after>{{ magento_redis_session_fail_after }}</fail_after>
+			<break_after_adminhtml>{{ magento_redis_session_break_after_adminhtml }}</break_after_adminhtml>
+			<first_lifetime>{{ magento_redis_session_first_lifetime }}</first_lifetime>
+			<bot_first_lifetime>{{ magento_redis_session_bot_first_lifetime }}</bot_first_lifetime>
+			<bot_lifetime>{{ magento_redis_session_bot_lifetime }}</bot_lifetime>
+			<disable_locking>{{ magento_redis_session_disable_locking }}</disable_locking>
+			<min_lifetime>{{ magento_redis_session_min_lifetime }}</min_lifetime>
+			<max_lifetime>{{ magento_redis_session_max_lifetime }}</max_lifetime>
+		</redis_session>
+		{% endif %}
+		{% if magento_redis_cache_enabled %}
+		<cache>
+			<backend>{{ magento_redis_cache_backend }}</backend>
+			<backend_options>
+				<server>{{ magento_redis_cache_backend_server }}</server>
+				<port>{{ magento_redis_cache_backend_port }}</port>
+				<persistent>{{ magento_redis_cache_backend_persistent }}</persistent>
+				<database>{{ magento_redis_cache_backend_database }}</database>
+				<password>{{ magento_redis_cache_backend_password }}</password>
+				<force_standalone>{{ magento_redis_cache_backend_force_standalone }}</force_standalone>
+				<connect_retries>{{ magento_redis_cache_backend_connect_retries }}</connect_retries>
+				<read_timeout>{{ magento_redis_cache_backend_read_timeout }}</read_timeout>
+				<automatic_cleaning_factor>{{ magento_redis_cache_backend_automatic_cleaning_factor }}</automatic_cleaning_factor>
+				<compress_data>{{ magento_redis_cache_backend_compress_data }}</compress_data>
+				<compress_tags>{{ magento_redis_cache_backend_compress_tags }}</compress_tags>
+				<compress_threshold>{{ magento_redis_cache_backend_compress_threshold }}</compress_threshold>
+				<compression_lib>{{ magento_redis_cache_backend_compression_lib }}</compression_lib>
+				<use_lua>{{ magento_redis_cache_backend_use_lua }}</use_lua>
+			</backend_options>
+		</cache>
+		{% endif %}
+	</global>
+	<admin>
+		<routers>
+			<adminhtml>
+				<args>
+					<frontName><![CDATA[{{ magento_admin_path }}]]></frontName>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+</config>
