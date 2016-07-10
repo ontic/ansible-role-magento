@@ -11,6 +11,7 @@ magento_user: 'root'
 magento_group: 'root'
 magento_git:
 magento_composer:
+magento_files:
 magento_local_xml_dest:
 magento_local_xml_template: 'local.xml.j2'
 magento_local_xml_mode: '0644'

@@ -56,3 +56,22 @@
     group: '{{ magento_group }}'
     mode: '{{ magento_local_xml_mode }}'
   when: '{{ magento_local_xml_dest | default(None) != None }}'
+
+- name: 'Magento | Configure files.'
+  become: yes
+  file:
+    follow: '{{ item.follow | default(omit) }}'
+    force: '{{ item.force | default(omit) }}'
+    group: '{{ item.group | default(magento_group) }}'
+    mode: '{{ item.mode | default(omit) }}'
+    owner: '{{ item.owner | default(magento_user) }}'
+    path: '{{ item.path }}'
+    recurse: '{{ item.recurse | default(omit) }}'
+    selevel: '{{ item.selevel | default(omit) }}'
+    serole: '{{ item.serole | default(omit) }}'
+    setype: '{{ item.setype | default(omit) }}'
+    seuser: '{{ item.seuser | default(omit) }}'
+    src: '{{ item.src | default(omit) }}'
+    state: '{{ item.state | default(omit) }}'
+  with_items: '{{ magento_files }}'
+  when: '{{ magento_files | default(None) != None }}'
