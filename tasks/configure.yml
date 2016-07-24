@@ -47,6 +47,14 @@
     working_dir: '{{ magento_composer.working_dir }}'
   when: '{{ magento_composer | default(None) != None }}'
 
+- name: 'Magento | Redeploy composer symlinks.'
+  become: yes
+  become_user: '{{ magento_user }}'
+  command: 'composer run-script post-install-cmd -vvv -- --redeploy'
+  args:
+    chdir: '{{ magento_composer.working_dir }}'
+  when: '{{ magento_composer | default(None) != None and magento_composer.redploy is defined and magento_composer.redploy == true }}'
+
 - name: 'Magento | Configure local XML file.'
   become: yes
   template:
