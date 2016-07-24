@@ -53,7 +53,7 @@
   command: 'composer run-script post-install-cmd -vvv -- --redeploy'
   args:
     chdir: '{{ magento_composer.working_dir }}'
-  when: '{{ magento_composer | default(None) != None and magento_composer.redploy is defined and magento_composer.redploy == true }}'
+  when: '{{ magento_composer | default(None) != None and magento_composer.redploy is defined and magento_composer.redploy | bool }}'
 
 - name: 'Magento | Configure local XML file.'
   become: yes
