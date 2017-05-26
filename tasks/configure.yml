@@ -1,9 +1,5 @@
-# This source file is subject to the (Open Source Initiative) BSD license
-# that is bundled with this package in the LICENSE file. It is also available
-# through the world-wide-web at this URL: http://www.ontic.com.au/license.html
-# If you did not receive a copy of the license and are unable to obtain it through
-# the world-wide-web, please send an email to license@ontic.com.au immediately.
-# Copyright (c) 2010-2016 Ontic. (http://www.ontic.com.au). All rights reserved.
+# Copyright (c) Ontic. (http://www.ontic.com.au). All rights reserved.
+# See the COPYING file bundled with this package for license details.
 
 ---
 
@@ -29,7 +25,7 @@
     update: yes
     verify_commit: '{{ magento_git.verify_commit | default(omit) }}'
     version: '{{ magento_git.version | default(omit) }}'
-  when: '{{ magento_git | default(None) != None }}'
+  when: 'magento_git | default(None) != None'
 
 - name: 'Magento | Configure composer.'
   become: yes
@@ -45,7 +41,7 @@
     prefer_dist: '{{ magento_composer.prefer_dist | default(omit) }}'
     prefer_source: '{{ magento_composer.prefer_source | default(omit) }}'
     working_dir: '{{ magento_composer.working_dir }}'
-  when: '{{ magento_composer | default(None) != None }}'
+  when: 'magento_composer | default(None) != None'
 
 - name: 'Magento | Redeploy composer symlinks.'
   become: yes
@@ -53,7 +49,7 @@
   command: 'composer run-script post-install-cmd -vvv -- --redeploy'
   args:
     chdir: '{{ magento_composer.working_dir }}'
-  when: '{{ magento_composer | default(None) != None and magento_composer.redeploy is defined and magento_composer.redeploy | bool }}'
+  when: 'magento_composer | default(None) != None and magento_composer.redeploy is defined and magento_composer.redeploy | bool'
 
 - name: 'Magento | Configure local XML file.'
   become: yes
@@ -63,7 +59,7 @@
     owner: '{{ magento_user }}'
     group: '{{ magento_group }}'
     mode: '{{ magento_local_xml_mode }}'
-  when: '{{ magento_local_xml_dest | default(None) != None }}'
+  when: 'magento_local_xml_dest | default(None) != None'
 
 - name: 'Magento | Configure files.'
   become: yes
@@ -82,4 +78,4 @@
     src: '{{ item.src | default(omit) }}'
     state: '{{ item.state | default(omit) }}'
   with_items: '{{ magento_files }}'
-  when: '{{ magento_files | default(None) != None }}'
+  when: 'magento_files | default(None) != None'
