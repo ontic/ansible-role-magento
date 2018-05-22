@@ -10,20 +10,17 @@ galaxy_info:
   description: 'This role installs Magento on RedHat/CentOS and Debian/Ubuntu Linux servers.'
   company: 'Ontic'
   license: 'BSD-3-Clause'
-  min_ansible_version: '2.3'
+  min_ansible_version: '2.4'
   platforms:
     - name: 'Ubuntu'
       versions:
-        - 'precise'
-        - 'trusty'
         - 'xenial'
+        - 'bionic'
     - name: 'Debian'
       versions:
-        - 'wheezy'
-        - 'jessie'
+        - 'stretch'
     - name: 'EL'
       versions:
-        - '6'
         - '7'
   galaxy_tags:
     - 'ontic'

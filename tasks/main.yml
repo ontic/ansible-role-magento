@@ -3,7 +3,7 @@
 
 ---
 
-- include: 'configure.yml'
+- import_tasks: 'configure.yml'
   tags:
     - 'magento'
     - 'magento-configure'
